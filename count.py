@@ -150,9 +150,9 @@ def find_ab_counts(sims):
 			if base_polytomy_size >= MIN_POLYTOMY:
 				ab_count_30perc_polytomy += 1
 
-			# And does that biggest clade itself have a polytomy?
-			if biggest.polytomy_size() >= MIN_POLYTOMY:
-				ab_count_30perc_twoPolytomies += 1
+				# And does that biggest clade itself have a polytomy?
+				if biggest.polytomy_size() >= MIN_POLYTOMY:
+					ab_count_30perc_twoPolytomies += 1
 
 	return (ab_count_30perc, ab_count_30perc_polytomy,
 			ab_count_30perc_twoPolytomies)

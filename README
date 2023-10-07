@@ -6,8 +6,7 @@ https://pubpeer.com/publications/3FB983CC74C0A93394568A373167CE#1
 
 for an explanation.
 
-I get one different count: 76 for for "ab_count_30perc_twoPolytomies" vs 5 for
-them.
+Output:
 
-That would increase their 0.5% figure for the "probability" of a single
-introduction to 7%.
+cc_counts (116, 74, 16, 0)
+ab_counts (119, 45, 33)
