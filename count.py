@@ -140,19 +140,24 @@ def find_ab_counts(sims):
 		num_leaves = sim.one_mut.num_leaves()
 		base_polytomy_size = sim.one_mut.polytomy_size()
 
-		biggest = cg.biggest_clade()
-		if 0.3 * num_leaves <= biggest.size <= 0.7 * num_leaves:
+		for clade in cg.clades:
+			if 0.3 * num_leaves <= clade.size <= 0.7 * num_leaves:
 
-			# Is the biggest clade between 30% and 70%?
-			ab_count_30perc += 1
+				# Is the biggest clade between 30% and 70%?
 
-			# Does it also have a base polytomy?
-			if base_polytomy_size >= MIN_POLYTOMY:
-				ab_count_30perc_polytomy += 1
+				# Note: this and ab_count_30perc_polytomy are now wrong because
+				# might count them in >1 clade. But they aren't using those
+				# numbers any more anyway.
+				ab_count_30perc += 1
 
-				# And does that biggest clade itself have a polytomy?
-				if biggest.polytomy_size() >= MIN_POLYTOMY:
-					ab_count_30perc_twoPolytomies += 1
+				# Does it also have a base polytomy?
+				if base_polytomy_size >= MIN_POLYTOMY:
+					ab_count_30perc_polytomy += 1
+
+					# And does that biggest clade itself have a polytomy?
+					if clade.polytomy_size() >= MIN_POLYTOMY:
+						ab_count_30perc_twoPolytomies += 1
+						break
 
 	return (ab_count_30perc, ab_count_30perc_polytomy,
 			ab_count_30perc_twoPolytomies)
